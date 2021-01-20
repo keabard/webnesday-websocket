@@ -36,10 +36,11 @@ app.ws.use(Route.all('/echo', function (ctx) {
 app.ws.use(Route.all('/mouse-position', function (ctx) {
   // `ctx` is the regular koa context created from the `ws` onConnection `socket.upgradeReq` object.
   // the websocket is added to the context on `ctx.websocket`.
+
   ctx.websocket.on('message', function(message) {
     // do something with the message from client
     mouse.insert(JSON.parse(message))
-    console.log(mouse.count())
+    app.ws.server.clients.forEach(client => client.send(mouse.count()))
   });
 }));
 

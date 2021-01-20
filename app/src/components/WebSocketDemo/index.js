@@ -4,9 +4,9 @@ import useWebSocket, {ReadyState} from 'react-use-websocket';
 
 const WebSocketDemo = () => {
   //Public API that will echo messages sent to it back to the client
-  const socketUrl = 'wss://echo.websocket.org';
+  // const socketUrl = 'wss://echo.websocket.org';
   // const socketUrl = 'ws://localhost:1234/hello';
-  // const socketUrl = 'ws://localhost:1234/echo';
+  const socketUrl = 'ws://localhost:1234/echo';
   const [messageHistory, setMessageHistory] = useState([]);
  
   const {
@@ -23,7 +23,7 @@ const WebSocketDemo = () => {
 
  
   const handleClickSendMessage = useCallback(() =>
-    sendMessage('Hello'), []);
+    sendMessage('Hello World'), []);
  
   const connectionStatus = {
     [ReadyState.CONNECTING]: 'Connecting',
